@@ -12,6 +12,7 @@ import { selectCurrentUser } from "./redux/Users/user-selector";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/Users/user-action";
 import { createStructuredSelector } from "reselect";
+
 const App = ({ setCurrentUser, currentUser }) => {
   const unsubscribeFromAuth = useRef(null);
   useEffect(() => {

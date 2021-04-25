@@ -1,22 +1,9 @@
-// This is comment
-// This is comment
-// This is comment
-// This is commentThis is comment
-// This is comment
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDR5qg8OpXNLYO7NTGH7zpTxi-4ngByNjQ",
-  authDomain: "crown-copy.firebaseapp.com",
-  projectId: "crown-copy",
-  storageBucket: "crown-copy.appspot.com",
-  messagingSenderId: "721399315331",
-  appId: "1:721399315331:web:b7fd9f4e435287b28954b6",
-  measurementId: "G-RTHVR0E0VL",
-};
-
+import configKeyObj from "./firebaseConfig";
+const firebaseConfig = configKeyObj;
+firebase.initializeApp(firebaseConfig);
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -38,7 +25,22 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-firebase.initializeApp(firebaseConfig);
+export const convertSnapshotCollectionToMap = (Collections) => {
+  const transformedCollection = Collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+  console.log(transformedCollection);
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
 
 export const auth = firebase.auth();
 

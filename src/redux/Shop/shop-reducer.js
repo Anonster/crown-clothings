@@ -3,14 +3,36 @@
 // This is comment
 // This is comment
 
-import SHOP_DATA from "./Shop_data";
-
+import {
+  FETCH_COLLECTIONS_FAILURE,
+  FETCH_COLLECTIONS_SUCCESS,
+  FETCH_COLLECTIONS_START,
+} from "./shop-types";
 const INITIAL_STATE = {
-  collections: SHOP_DATA,
+  collections: null,
+  isFetching: false,
+  errorMessage: undefined,
 };
 
 const ShopReducer = (state = INITIAL_STATE, action) => {
-  switch (action) {
+  switch (action.type) {
+    case FETCH_COLLECTIONS_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCH_COLLECTIONS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        collections: action.payload,
+      };
+    case FETCH_COLLECTIONS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }
