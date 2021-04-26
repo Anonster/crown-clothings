@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 const Shop = ({ fetchCollectionStartAsync }) => {
   useEffect(() => {
     fetchCollectionStartAsync();
-  }, []);
+  }, [fetchCollectionStartAsync]);
   return (
     <div>
       <Route exact path='/shop' component={CollectionsOverviewContainer} />

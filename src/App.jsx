@@ -15,6 +15,7 @@ import { createStructuredSelector } from "reselect";
 
 const App = ({ setCurrentUser, currentUser }) => {
   const unsubscribeFromAuth = useRef(null);
+  // const [User] = useState(currentUser);
   useEffect(() => {
     unsubscribeFromAuth.current = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -28,7 +29,6 @@ const App = ({ setCurrentUser, currentUser }) => {
       unsubscribeFromAuth.current = null;
     };
   }, [setCurrentUser]);
-
   return (
     <>
       <Header />
