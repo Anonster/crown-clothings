@@ -4,13 +4,13 @@ import { Route } from "react-router-dom";
 
 import CollectionsOverviewContainer from "../../Components/CollectionOverview/CollectionOverviewContainer";
 import CollectionPageContainer from "../Collection/CollectionContainer";
-import { fetchCollectionStartAsync } from "../../redux/Shop/shop-actions";
+import { fetchCollectionStart } from "../../redux/Shop/shop-actions";
 import { connect } from "react-redux";
 
-const Shop = ({ fetchCollectionStartAsync }) => {
+const Shop = ({ fetchCollectionStart }) => {
   useEffect(() => {
-    fetchCollectionStartAsync();
-  }, [fetchCollectionStartAsync]);
+    fetchCollectionStart();
+  }, [fetchCollectionStart]);
   return (
     <div>
       <Route exact path='/shop' component={CollectionsOverviewContainer} />
@@ -19,6 +19,6 @@ const Shop = ({ fetchCollectionStartAsync }) => {
   );
 };
 const mapDispatchToProps = (dispatch) => ({
-  fetchCollectionStartAsync: () => dispatch(fetchCollectionStartAsync()),
+  fetchCollectionStart: () => dispatch(fetchCollectionStart()),
 });
 export default connect(null, mapDispatchToProps)(Shop);
