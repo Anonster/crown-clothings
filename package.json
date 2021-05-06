@@ -4,8 +4,8 @@
   "description": "Ecommerce app built in react",
   "main": "index.js",
   "engines": {
-    "node": "12.13.0",
-    "npm": "6.12.0"
+    "node": "12.21.0",
+    "npm": "7.5.2"
   },
   "scripts": {
     "client": "cd client && npm start",

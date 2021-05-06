@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Homepage from "./Pages/Homepage/Homepage";
-import "./App.css";
+import "./App.scss";
 import Header from "./Components/Header/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Shop from "./Pages/Shop/Shop";
@@ -20,15 +20,15 @@ const App = ({ currentUser, checkUserSession }) => {
     <>
       <Header />
       <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route path='/shop' component={Shop} />
-        <Route exact path='/contact' component={Contact} />
+        <Route exact path="/" component={Homepage} />
+        <Route path="/shop" component={Shop} />
+        <Route exact path="/contact" component={Contact} />
         <Route
           exact
-          path='/signin'
-          render={() => (currentUser ? <Redirect to='/' /> : <Signin />)}
+          path="/signin"
+          render={() => (currentUser ? <Redirect to="/" /> : <Signin />)}
         />
-        <Route path='/checkout' component={Checkout} />
+        <Route path="/checkout" component={Checkout} />
       </Switch>
     </>
   );

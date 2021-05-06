@@ -19,6 +19,12 @@
     position: absolute;
     top: 255px;
     display: none;
+    @media screen and (max-width: 800px) {
+      display: block;
+      min-width: unset;
+      opacity: 0.9;
+      padding: 0 10px 0 10px;
+    }
   }
   &:hover {
     .image {
@@ -27,6 +33,15 @@
     .custom-button {
       opacity: 0.85;
       display: flex;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    width: 40vw;
+    &:hover {
+      opacity: unset;
+    }
+    .custom-button {
+      opacity: unset;
     }
   }
   .collection-footer {
